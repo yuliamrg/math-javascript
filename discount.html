@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porcentaje y descuentos</title>
+    <script defer src="./discount.js"></script>
+</head>
+<body>
+    <h1>Descuento</h1>
+
+    <label for="price">Precio original</label>
+    <input type="number" id="price">
+    <label for="coupon">Cupon de descuento</label>
+    <input id="coupon" list="descuentos">
+        <datalist id="descuentos">
+            <option value="Navideño"></option>
+            <option value="Estudiantil"></option>
+            <option value="IVA"></option>
+            <option value="Especial"></option>
+        </datalist>         
+    <button type="button" id="calcular">Calcular descuento</button>
+
+    <p id="result"></p>
+</body>
+</html>
