@@ -9,15 +9,24 @@
     <script defer src="./promedio.js"></script>
 </head>
 <body>
-    <h1>Calcular el promedio de una lista</h1>
-    <form action="">
-        <label for="lenght">Ingresa la cantidad a promediar(de 2 a 10 numeros)</label>
-        <input id="lenght" type="number">
-        <button id="butttonConfirm" type="button">confirmar</button>
-        <button type="button" id="buttonClear">limpiar</button>
-    </form>
-    <form id="promNumbers" action="" class="inactive">
-            <label for="">Ingrese los numeros:</label>
-    </form>
+    <header class="title">
+        <h1>Media, Mediana y Moda</h1>
+    </header>
+    
+    <main>
+        <section class="">
+            <h2>Calcular el promedio, la mediana o la moda</h2>
+            <form action="">
+                <label for="lenght">Ingresa la cantidad a promediar(de 2 a 10 numeros)</label>
+                <input id="lenght" type="number">
+                <button id="buttonConfirm" type="button">confirmar</button>
+                <button type="button" id="buttonClear">limpiar</button>
+            </form>
+            <form id="promNumbers" action="" class="inactive">
+                <label id="numberLabel" for="">Ingrese los numeros:</label>
+            </form>
+            <p id="result"></p>
+        </section>
+    </main>
 </body>
 </html>
