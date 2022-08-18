@@ -2,72 +2,20 @@
 
 const platziMath = {};
 
-platziMath.clearInputs = function() {
-    const large = formNumbers.length;
-
-    if(large) {
-        for (let i = 0; i < large; i++){
-            formNumbers.removeChild(formNumbers[0]);
-        }
-    }
-    formNumbers.classList.add('inactive');
-    promWarn.innerText = "";
-    label.innerText = "";
-    pResult.innerText = "";
-};
-platziMath.createInputs = function() {
-    const numbers = parseInt(lengthNumbers.value);
-    
-    clearInputs();
-
-    if (numbers > 1 && numbers < 11) {
-
-        for (let i=0; i < numbers; i++ ) { 
-            const input = document.createElement('input');
-            input.classList.add('inputNumbers');
-            input.setAttribute('type','number');
-            input.setAttribute('required','');
-            formNumbers.appendChild(input);
-        }
-        formNumbers.appendChild(promButton);
-        label.innerText = 'Ingrese los numeros:';
-    } else {
-        promWarn.innerText = 'Sólo puedo promediar de 2 a 10 numeros, gracias por tu comprensión';
-        formNumbers.appendChild(promWarn);
-    }
-    formNumbers.classList.remove('inactive');
-
-}
-platziMath.onClickCalculateProm = function(event) {
-    event.preventDefault();
-    const countArray = formNumbers.length - 1;
-
-    let arrayNumbers = [];
-    for(let i = 0; i < countArray; i++) {
-        let number = formNumbers.elements[i].value;
-        number = parseInt(number);
-        arrayNumbers.push(number);
-    }
-
-    const prom = calculateAverageReduce(arrayNumbers);
-    const median = calculateMedian(arrayNumbers);
-    const mode = calculateMode(arrayNumbers);
-    console.log({arrayNumbers, prom, median, mode});
-}
 platziMath.calculateAverageReduce = function(array) {
     const acumulado = array.reduce((valorAcumulado, nuevoValor) => valorAcumulado + nuevoValor);
     return acumulado / array.length;
 }
 platziMath.calculateMedian = function(array) {
-    array = sortList(array);
+    array = platziMath.sortList(array);
 
-    const arrayPAr = itsEven(array);
+    const arrayPAr = platziMath.itsEven(array);
     const long = array.length;
     let mediana;
     if (arrayPAr) {
         const mitad1 = array[long / 2];
         const mitad2 = array[(long / 2) - 1];
-        mediana = calculateAverageReduce([mitad1, mitad2]);
+        mediana = platziMath.calculateAverageReduce([mitad1, mitad2]);
         return mediana;
     } else {
         mediana = Math.floor(long / 2);
@@ -89,7 +37,7 @@ platziMath.calculateMode = function(array) {
 
     const arrayList = Object.entries(listaCount);
     const position = arrayList[0].length - 1;
-    const orderArrayList = sortListBidimensional(arrayList, position);
+    const orderArrayList = platziMath.sortListBidimensional(arrayList, position);
     const maxNumber = orderArrayList[orderArrayList.length - 1];
     const nextMaxNumber = orderArrayList[orderArrayList.length - 2];
 
@@ -196,9 +144,9 @@ function onClickCalculateProm(event) {
         arrayNumbers.push(number);
     }
 
-    const prom = calculateAverageReduce(arrayNumbers);
-    const median = calculateMedian(arrayNumbers);
-    const mode = calculateMode(arrayNumbers);
+    const prom = platziMath.calculateAverageReduce(arrayNumbers);
+    const median = platziMath.calculateMedian(arrayNumbers);
+    const mode = platziMath.calculateMode(arrayNumbers);
     console.log({arrayNumbers, prom, median, mode});
 }
 
@@ -215,7 +163,7 @@ function onClickCalculateProm(event) {
     return acumulado / longitud;
 } */
 
-function calculateAverageReduce(array) {
+/* function calculateAverageReduce(array) {
     const acumulado = array.reduce((valorAcumulado, nuevoValor) => valorAcumulado + nuevoValor);
     return acumulado / array.length;
 }
@@ -266,13 +214,13 @@ function calculateMode(array) {
     } else {
         return 'pos todos son iguales wey';
     }
-}
+} */
 
 
 
 //Funciones complementarias
 
-function itsEven(array) {
+/* function itsEven(array) {
     return !(array.length % 2);
 }
 
@@ -286,4 +234,4 @@ function sortListBidimensional(unorderedlist, i) {
     const list = unorderedlist.sort((a, b) => a[i] - b[i] );
     return list;
 
-}
+} */
